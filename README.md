@@ -26,3 +26,9 @@ Database/
 ├── main.py                    # Production-ready ensemble model execution
 ├── requirements.txt           # Python application dependencies
 └── README.md                  # Project documentation
+⚙️ Installation & SetupClone or download this repository to your local machine.Ensure you have your virtual environment activated:Bash# Windows
+.venv\Scripts\Activate.ps1
+Install the required libraries:Bashpip install -r requirements.txt
+🚀 How to Run the ProjectStep 1: Clean and Prepare DataRun the cleaning script to merge data sources and prepare your feature matrices:Bashpython src/clean.py
+Step 2: Run Experimental ModelsEvaluate how individual algorithms perform against the baseline:Bashpython models/train_linear.py
+Step 3: Execute Production ModelRun the champion ensemble architecture:Bashpython main.py
