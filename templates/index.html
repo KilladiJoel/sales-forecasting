@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inventory Requirements Forecast</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/water.css@2/out/water.css">
+</head>
+<body>
+    <h1>Next-Month Inventory Requirements Forecast</h1>
+    <p>Select a store below to run a future timeline simulation using the Decision Tree Regressor model.</p>
+
+    <form method="POST">
+        <label for="store_nbr">Select Store Number:</label>
+        <select name="store_nbr" id="store_nbr" required>
+            {% for store in stores %}
+                <option value="{{ store }}" {% if store == selected_store %}selected{% endif %}>Store {{ store }}</option>
+            {% endfor %}
+        </select>
+        <button type="submit">Generate Stock Forecast</button>
+    </form>
+
+    {% if total_stock is not none %}
+        <hr>
+        <h2>Results for Store Reference #{{ selected_store }}</h2>
+        <div style="display: flex; gap: 40px; margin-bottom: 20px;">
+            <div>
+                <h3>Total Allocated Stock Needed</h3>
+                <p style="font-size: 2rem; font-weight: bold; color: #0076d6;">{{ total_stock }} units</p>
+            </div>
+            <div>
+                <h3>Average Predicted Daily Sales</h3>
+                <p style="font-size: 2rem; font-weight: bold;">{{ avg_daily }} units</p>
+            </div>
+        </div>
+    {% endif %}
+</body>
+</html>
